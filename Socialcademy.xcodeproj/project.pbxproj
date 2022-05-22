@@ -85,8 +85,6 @@
 			isa = PBXGroup;
 			children = (
 				ED9E60FE283A8F40004925C6 /* Socialcademy */,
-				ED9E610F283A8F42004925C6 /* SocialcademyTests */,
-				ED9E6119283A8F42004925C6 /* SocialcademyUITests */,
 				ED9E60FD283A8F40004925C6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -104,11 +102,10 @@
 		ED9E60FE283A8F40004925C6 /* Socialcademy */ = {
 			isa = PBXGroup;
 			children = (
-				ED9E6140283A9597004925C6 /* GoogleService-Info.plist */,
+				ED9E6146283ABD1C004925C6 /* Tests */,
+				ED9E6148283ABD5D004925C6 /* Resources */,
 				ED9E60FF283A8F40004925C6 /* SocialcademyApp.swift */,
-				ED9E6101283A8F40004925C6 /* ContentView.swift */,
-				ED9E6103283A8F42004925C6 /* Assets.xcassets */,
-				ED9E6105283A8F42004925C6 /* Preview Content */,
+				ED9E6147283ABD2C004925C6 /* Views */,
 			);
 			path = Socialcademy;
 			sourceTree = "<group>";
@@ -136,6 +133,33 @@
 				ED9E611C283A8F42004925C6 /* SocialcademyUITestsLaunchTests.swift */,
 			);
 			path = SocialcademyUITests;
+			sourceTree = "<group>";
+		};
+		ED9E6146283ABD1C004925C6 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				ED9E6119283A8F42004925C6 /* SocialcademyUITests */,
+				ED9E610F283A8F42004925C6 /* SocialcademyTests */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		ED9E6147283ABD2C004925C6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				ED9E6101283A8F40004925C6 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		ED9E6148283ABD5D004925C6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				ED9E6140283A9597004925C6 /* GoogleService-Info.plist */,
+				ED9E6103283A8F42004925C6 /* Assets.xcassets */,
+				ED9E6105283A8F42004925C6 /* Preview Content */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -440,7 +464,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Socialcademy/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "Socialcademy/Resources/Preview\\ Content";
 				DEVELOPMENT_TEAM = 9R2VD97LJ8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -470,7 +494,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Socialcademy/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "Socialcademy/Resources/Preview\\ Content";
 				DEVELOPMENT_TEAM = 9R2VD97LJ8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
