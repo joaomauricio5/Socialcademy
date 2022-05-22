@@ -21,6 +21,7 @@
 		ED9E6143283A9597004925C6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED9E6140283A9597004925C6 /* GoogleService-Info.plist */; };
 		ED9E614B283ABE44004925C6 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9E614A283ABE44004925C6 /* Post.swift */; };
 		ED9E614D283ABF4A004925C6 /* PostsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9E614C283ABF4A004925C6 /* PostsList.swift */; };
+		ED9E614F283AC19C004925C6 /* PostRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9E614E283AC19C004925C6 /* PostRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		ED9E6140283A9597004925C6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ED9E614A283ABE44004925C6 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		ED9E614C283ABF4A004925C6 /* PostsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsList.swift; sourceTree = "<group>"; };
+		ED9E614E283AC19C004925C6 /* PostRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				ED9E614C283ABF4A004925C6 /* PostsList.swift */,
+				ED9E614E283AC19C004925C6 /* PostRow.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 			files = (
 				ED9E614B283ABE44004925C6 /* Post.swift in Sources */,
 				ED9E6100283A8F40004925C6 /* SocialcademyApp.swift in Sources */,
+				ED9E614F283AC19C004925C6 /* PostRow.swift in Sources */,
 				ED9E614D283ABF4A004925C6 /* PostsList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

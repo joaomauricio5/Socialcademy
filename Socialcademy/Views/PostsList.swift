@@ -8,12 +8,16 @@
 import SwiftUI
 
 struct PostsList: View {
-    @State private var posts = [Post.testPost]
+    private var posts = [Post.testPost]
+    @State private var searchText: String = ""
+    
     var body: some View {
         NavigationView{
             List(posts) {post in
-                Text(post.content)
-            }.navigationTitle("Posts")
+                PostRow(post: post)
+            }
+            .searchable(text: $searchText)
+            .navigationTitle("Posts")
         }
     }
 }
