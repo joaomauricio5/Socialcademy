@@ -25,6 +25,18 @@ class SocialcademyTests: XCTestCase {
         // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
         // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
     }
+    
+    func testPostContains() throws {
+        let Post = Post(title: "tItLE,.13@£!", content: "CONTENT", authorName: "content", timestamp: Date())
+        XCTAssert(Post.contains("CONTENT"))
+        XCTAssert(Post.contains("CONT"))
+        XCTAssert(Post.contains("conTEnT"))
+        XCTAssert(Post.contains("content"))
+        XCTAssert(Post.contains("title"))
+        XCTAssert(Post.contains("    title     "))
+        XCTAssertFalse(Post.contains("Test..."))
+        XCTAssertFalse(Post.contains("CONTENTE"))
+    }
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
