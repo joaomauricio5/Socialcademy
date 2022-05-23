@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PostsList: View {
+    
     private var posts = [Post.testPost]
     @State private var searchText: String = ""
     @State private var showNewPostForm = false
@@ -27,7 +28,7 @@ struct PostsList: View {
                 }
             }
             .sheet(isPresented: $showNewPostForm) {
-                NewPostForm()
+                NewPostForm(createAction: {_ in})
             }
         }
     }
