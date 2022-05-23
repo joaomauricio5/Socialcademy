@@ -12,5 +12,6 @@ struct PostViewModel {
     
     mutating func createPost(_ post: Post) {
         posts.insert(post, at: 0)
+        try! PostsRepository.upload(post)
     }
 }
