@@ -11,22 +11,37 @@ struct NewPostForm: View {
     
     enum FormState {
         case idle, working, error
+        
+        var isError: Bool {
+            get {
+                self == .error
+            }
+            set {
+                //guard !newValue else {return}
+                self = .idle
+            }
+        }
     }
     
-    @State private var state = FormState.error
+    @State private var state = FormState.idle
     
     @State private var newPost = Post(title: "", content: "", authorName: "")
     
     @Environment(\.dismiss) var dismiss
     
-    typealias CreateAction = (Post) -> Void
+    typealias CreateAction = (Post) throws -> Void
     let createAction: CreateAction
     
     private func createPost() {
         state = .working
-        createAction(newPost)
-        print("Post created")
-        dismiss()
+        do {
+            try createAction(newPost)
+            print("Post created")
+            dismiss()
+        } catch  {
+            state = .error
+            print("ERROR: Cannot create post: \(error)")
+        }
     }
 
     var body: some View {
@@ -56,6 +71,12 @@ struct NewPostForm: View {
                 .frame(maxWidth: .infinity)
             }
             .navigationTitle("New Post")
+            .disabled(state == .working)
+            .alert("Error while uploading post", isPresented: $state.isError) {
+                Button("OK") {
+                    
+                }
+            }
         }
     }
 }

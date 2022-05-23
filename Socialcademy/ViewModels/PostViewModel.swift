@@ -10,8 +10,8 @@ import Foundation
 struct PostViewModel {
     var posts = [Post.testPost]
     
-    mutating func createPost(_ post: Post) {
+    mutating func createPost(_ post: Post) throws {
         posts.insert(post, at: 0)
-        try! PostsRepository.upload(post)
+        try PostsRepository.upload(post)
     }
 }
