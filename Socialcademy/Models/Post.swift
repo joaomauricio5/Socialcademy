@@ -12,7 +12,7 @@ struct Post: Identifiable {
     var title: String
     var content: String
     var authorName: String
-    var timestamp: Date
+    var timestamp = Date()
     
     func contains(_ string: String) -> Bool {
         let components = [title, content, authorName].map{$0.lowercased()}
