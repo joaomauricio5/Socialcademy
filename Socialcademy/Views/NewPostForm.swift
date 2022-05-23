@@ -9,6 +9,7 @@ import SwiftUI
 
 struct NewPostForm: View {
     @State private var newPost = Post(title: "", content: "", authorName: "")
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         NavigationView{
@@ -37,6 +38,7 @@ struct NewPostForm: View {
     
     private func createPost() {
         print("Post created")
+        presentationMode.wrappedValue.dismiss()
     }
 }
 
