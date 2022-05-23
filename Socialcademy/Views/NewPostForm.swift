@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct NewPostForm: View {
+    @State private var newPost = Post(title: "", content: "", authorName: "")
+    @Environment(\.dismiss) var dismiss
     
     typealias CreateAction = (Post) -> Void
     let createAction: CreateAction
@@ -15,11 +17,9 @@ struct NewPostForm: View {
     private func createPost() {
         createAction(newPost)
         print("Post created")
-        presentationMode.wrappedValue.dismiss()
+        dismiss()
     }
-    
-    @State private var newPost = Post(title: "", content: "", authorName: "")
-    @Environment(\.presentationMode) var presentationMode
+
     
     var body: some View {
         NavigationView{
