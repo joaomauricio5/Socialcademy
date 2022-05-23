@@ -23,6 +23,7 @@
 		ED9E614D283ABF4A004925C6 /* PostsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9E614C283ABF4A004925C6 /* PostsList.swift */; };
 		ED9E614F283AC19C004925C6 /* PostRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9E614E283AC19C004925C6 /* PostRow.swift */; };
 		ED9E6151283B00E8004925C6 /* NewPostForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9E6150283B00E8004925C6 /* NewPostForm.swift */; };
+		ED9E6156283BBC63004925C6 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9E6155283BBC63004925C6 /* PostViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		ED9E614C283ABF4A004925C6 /* PostsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsList.swift; sourceTree = "<group>"; };
 		ED9E614E283AC19C004925C6 /* PostRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRow.swift; sourceTree = "<group>"; };
 		ED9E6150283B00E8004925C6 /* NewPostForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostForm.swift; sourceTree = "<group>"; };
+		ED9E6155283BBC63004925C6 /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 		ED9E60FE283A8F40004925C6 /* Socialcademy */ = {
 			isa = PBXGroup;
 			children = (
+				ED9E6152283BBC24004925C6 /* ViewModels */,
 				ED9E6149283ABE2C004925C6 /* Models */,
 				ED9E6146283ABD1C004925C6 /* Tests */,
 				ED9E6148283ABD5D004925C6 /* Resources */,
@@ -177,6 +180,14 @@
 				ED9E614A283ABE44004925C6 /* Post.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		ED9E6152283BBC24004925C6 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				ED9E6155283BBC63004925C6 /* PostViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -320,6 +331,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED9E6156283BBC63004925C6 /* PostViewModel.swift in Sources */,
 				ED9E614B283ABE44004925C6 /* Post.swift in Sources */,
 				ED9E6100283A8F40004925C6 /* SocialcademyApp.swift in Sources */,
 				ED9E614F283AC19C004925C6 /* PostRow.swift in Sources */,
