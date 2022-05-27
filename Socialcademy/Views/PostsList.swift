@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PostsList: View {
     
-    @State private var viewModel = PostViewModel()
+    @StateObject private var viewModel = PostViewModel()
     
     @State private var searchText: String = ""
     @State private var showNewPostForm = false
@@ -33,6 +33,8 @@ struct PostsList: View {
                     try viewModel.createPost(post)
                 })
             }
+        }.onAppear {
+            viewModel.fetchPosts()
         }
     }
 }

@@ -7,11 +7,22 @@
 
 import Foundation
 
-struct PostViewModel {
-    var posts = [Post.testPost]
+@MainActor
+class PostViewModel: ObservableObject {
+    @Published var posts = [Post]()
     
-    mutating func createPost(_ post: Post) throws {
+    func createPost(_ post: Post) throws {
         posts.insert(post, at: 0)
         try PostsRepository.upload(post)
+    }
+    
+    func fetchPosts() {
+        Task {
+            do {
+                posts = try await PostsRepository.fetchPosts()
+            } catch {
+                print("Cannot fetch posts: \(error)")
+            }
+        }
     }
 }
