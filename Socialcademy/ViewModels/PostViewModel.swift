@@ -8,8 +8,16 @@
 import Foundation
 
 @MainActor
+
 class PostViewModel: ObservableObject {
+    
+    enum LoadingStatus {
+        case loading, loaded, error
+    }
+    
     @Published var posts = [Post]()
+    
+    @Published var loadingStatus : LoadingStatus = .loading
     
     func createPost(_ post: Post) throws {
         posts.insert(post, at: 0)
@@ -20,8 +28,10 @@ class PostViewModel: ObservableObject {
         Task {
             do {
                 posts = try await PostsRepository.fetchPosts()
+                loadingStatus = .loaded
             } catch {
                 print("Cannot fetch posts: \(error)")
+                loadingStatus = .error
             }
         }
     }

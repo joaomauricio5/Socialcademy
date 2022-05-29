@@ -16,12 +16,25 @@ struct PostsList: View {
     
     var body: some View {
         NavigationView{
-            List(viewModel.posts) {post in
-                if searchText.isEmpty || post.contains(searchText){
-                    PostRow(post: post)
+            Group {
+                switch viewModel.loadingStatus {
+                case .loading:
+                    ProgressView()
+                case .error:
+                    Text("ERROR")
+                case .loaded:
+                    if viewModel.posts.isEmpty {
+                        Text("NO POSTS")
+                    } else {
+                        List(viewModel.posts) {post in
+                            if searchText.isEmpty || post.contains(searchText){
+                                PostRow(post: post)
+                            }
+                        }
+                        .searchable(text: $searchText)
+                    }
                 }
             }
-            .searchable(text: $searchText)
             .navigationTitle("Posts")
             .toolbar{
                 Button(action: {showNewPostForm = true}) {
