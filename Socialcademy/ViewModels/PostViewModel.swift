@@ -25,6 +25,7 @@ class PostViewModel: ObservableObject {
     }
     
     func fetchPosts() {
+        loadingStatus = .loading
         Task {
             do {
                 posts = try await PostsRepository.fetchPosts()

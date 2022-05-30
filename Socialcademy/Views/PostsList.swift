@@ -21,10 +21,10 @@ struct PostsList: View {
                 case .loading:
                     ProgressView()
                 case .error:
-                    Text("ERROR")
+                    EmptyListView(title: "Cannot Load Posts", message: "Retry or check your connection.", action: {viewModel.fetchPosts()})
                 case .loaded:
                     if viewModel.posts.isEmpty {
-                        Text("NO POSTS")
+                        EmptyListView(title: "No Posts", message: "There aren't any posts yet.")
                     } else {
                         List(viewModel.posts) {post in
                             if searchText.isEmpty || post.contains(searchText){
