@@ -162,8 +162,8 @@
 		ED9E6147283ABD2C004925C6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EDA9C82A284444BC000B5DE6 /* SupportingViews */,
 				ED9E614C283ABF4A004925C6 /* PostsList.swift */,
-				EDA9C8262844353D000B5DE6 /* EmptyListView.swift */,
 				ED9E614E283AC19C004925C6 /* PostRow.swift */,
 				ED9E6150283B00E8004925C6 /* NewPostForm.swift */,
 			);
@@ -202,6 +202,14 @@
 				ED9E6158283BEDD4004925C6 /* PostsRepository.swift */,
 			);
 			path = Repositories;
+			sourceTree = "<group>";
+		};
+		EDA9C82A284444BC000B5DE6 /* SupportingViews */ = {
+			isa = PBXGroup;
+			children = (
+				EDA9C8262844353D000B5DE6 /* EmptyListView.swift */,
+			);
+			path = SupportingViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
