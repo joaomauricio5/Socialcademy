@@ -37,6 +37,7 @@ struct EmptyListView: View {
 
 struct EmptyListView_Previews: PreviewProvider {
     static var previews: some View {
-        EmptyListView(title: "No Posts", message: "There aren't any posts yet.", action: {})
+        EmptyListView(title: "No Posts", message: "There aren't any posts yet.", action: nil)
+        EmptyListView(title: "Cannot Load Posts", message: "Retry or check your connection.", action: {})
     }
 }
