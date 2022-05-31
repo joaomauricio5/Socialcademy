@@ -33,6 +33,7 @@ struct PostsList: View {
                             }
                         }
                         .searchable(text: $searchText)
+                        .animation(Animation.default, value: viewModel.posts)
                     }
                 }
             }

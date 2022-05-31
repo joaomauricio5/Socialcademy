@@ -19,7 +19,14 @@ struct PostsRepository {
     
     static func delete(_ post: Post) {
         let document = postsReference.document(post.id.uuidString)
-        document.delete()
+        try document.delete() { error in
+            if let error = error {
+                print("Error deleting document: \(error) ")
+                fatalError()
+            } else {
+                print("SUCCESS")
+            }
+        }
     }
     
     static func fetchPosts() async throws -> [Post] {
