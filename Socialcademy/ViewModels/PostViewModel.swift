@@ -41,4 +41,10 @@ class PostViewModel: ObservableObject {
             }
         }
     }
+    
+    func toggleFavorite(for post: Post) {
+        PostsRepository.toggleFavorite(for: post)
+        let index = posts.firstIndex(of: post)!
+        posts[index].isFavorite.toggle()
+    }
 }

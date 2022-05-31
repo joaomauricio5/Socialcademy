@@ -35,4 +35,9 @@ struct PostsRepository {
             try! document.data(as: Post.self)
         }
     }
+    
+    static func toggleFavorite(for post: Post) {
+        let document = PostsRepository.postsReference.document(post.id.uuidString)
+        try document.setData(["isFavorite": post.isFavorite ? false : true], merge: true)
+    }
 }

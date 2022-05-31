@@ -36,14 +36,18 @@ struct PostRow: View {
             Text(post.content)
             
             HStack{
+                
+                Button(action: { viewModel.toggleFavorite(for: post) } ) {
+                    Label("Toggle favorite", systemImage: post.isFavorite ? "heart.fill" : "heart")
+                        .foregroundColor(.red)
+                }
+                
                 Spacer()
+                
                 Button(role: .destructive,
                        action: { isConfirmationShowing = true }) {
                     Label("Trash bin", systemImage: "trash")
-                        .labelStyle(.iconOnly)
                 }
-                       .padding(.trailing)
-                       .buttonStyle(.borderless)
                        .confirmationDialog("Are you sure you want to delete this post?",
                                            isPresented: $isConfirmationShowing,
                                            titleVisibility: Visibility.visible) {
@@ -52,6 +56,8 @@ struct PostRow: View {
             }
         }
         .padding(.vertical)
+        .buttonStyle(.borderless)
+        .labelStyle(.iconOnly)
     }
 }
 
