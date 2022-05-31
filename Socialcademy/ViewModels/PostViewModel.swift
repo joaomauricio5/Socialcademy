@@ -24,6 +24,11 @@ class PostViewModel: ObservableObject {
         try PostsRepository.upload(post)
     }
     
+    func deletePost(_ post: Post) {
+        posts.removeAll() {$0.id == post.id}
+        PostsRepository.delete(post)
+    }
+    
     func fetchPosts() {
         loadingStatus = .loading
         Task {
