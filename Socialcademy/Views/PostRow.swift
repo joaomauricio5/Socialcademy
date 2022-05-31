@@ -39,7 +39,7 @@ struct PostRow: View {
                 
                 Button(action: { viewModel.toggleFavorite(for: post) } ) {
                     Label("Toggle favorite", systemImage: post.isFavorite ? "heart.fill" : "heart")
-                        .foregroundColor(.red)
+                        .foregroundColor(post.isFavorite ? .red : .gray)
                 }
                 
                 Spacer()
