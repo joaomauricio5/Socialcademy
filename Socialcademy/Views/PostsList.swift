@@ -29,7 +29,7 @@ struct PostsList: View {
                         List(viewModel.posts) {post in
                             if searchText.isEmpty || post.contains(searchText){
                                 PostRow(post: post)
-                                Button(action: {viewModel.deletePost(post)}) { Text("DELETE")}
+                                    .environmentObject(viewModel)
                             }
                         }
                         .searchable(text: $searchText)
