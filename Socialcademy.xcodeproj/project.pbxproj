@@ -26,6 +26,7 @@
 		ED9E6156283BBC63004925C6 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9E6155283BBC63004925C6 /* PostViewModel.swift */; };
 		ED9E6159283BEDD4004925C6 /* PostsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9E6158283BEDD4004925C6 /* PostsRepository.swift */; };
 		EDA9C8272844353D000B5DE6 /* EmptyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA9C8262844353D000B5DE6 /* EmptyListView.swift */; };
+		EDD705032847C0F600FD8D6B /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD705022847C0F600FD8D6B /* MainTabView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		ED9E6155283BBC63004925C6 /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
 		ED9E6158283BEDD4004925C6 /* PostsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsRepository.swift; sourceTree = "<group>"; };
 		EDA9C8262844353D000B5DE6 /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
+		EDD705022847C0F600FD8D6B /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +168,7 @@
 				ED9E614C283ABF4A004925C6 /* PostsList.swift */,
 				ED9E614E283AC19C004925C6 /* PostRow.swift */,
 				ED9E6150283B00E8004925C6 /* NewPostForm.swift */,
+				EDD705022847C0F600FD8D6B /* MainTabView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 			files = (
 				ED9E6156283BBC63004925C6 /* PostViewModel.swift in Sources */,
 				ED9E614B283ABE44004925C6 /* Post.swift in Sources */,
+				EDD705032847C0F600FD8D6B /* MainTabView.swift in Sources */,
 				ED9E6159283BEDD4004925C6 /* PostsRepository.swift in Sources */,
 				ED9E6100283A8F40004925C6 /* SocialcademyApp.swift in Sources */,
 				EDA9C8272844353D000B5DE6 /* EmptyListView.swift in Sources */,
