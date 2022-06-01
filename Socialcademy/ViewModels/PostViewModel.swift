@@ -33,7 +33,7 @@ class PostViewModel: ObservableObject {
         loadingStatus = .loading
         Task {
             do {
-                posts = try await PostsRepository.fetchPosts()
+                posts = try await PostsRepository.fetchAllPosts()
                 loadingStatus = .loaded
             } catch {
                 print("Cannot fetch posts: \(error)")

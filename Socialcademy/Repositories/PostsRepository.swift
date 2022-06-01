@@ -29,10 +29,18 @@ struct PostsRepository {
         }
     }
     
-    static func fetchPosts() async throws -> [Post] {
-        let querySnapshot = try await postsReference.order(by: "timestamp", descending: true).getDocuments()
-        return querySnapshot.documents.compactMap {document in
-            try! document.data(as: Post.self)
+    static func fetchAllPosts() async throws -> [Post] {
+        try await fetchPosts(from: postsReference)
+    }
+    
+    static func fetchFavoritePosts() async throws -> [Post] {
+        try await fetchPosts(from: postsReference.whereField("isFavorite", isEqualTo: true))
+    }
+    
+    static private func fetchPosts(from query: Query) async throws -> [Post] {
+        let snapshot = try await query.order(by: "timestamp", descending: true).getDocuments()
+        return snapshot.documents.compactMap { document in
+             try! document.data(as: Post.self)
         }
     }
     
