@@ -21,6 +21,15 @@ struct PostsList: View {
         self.filter = filter
     }
     
+    private var navigationTitle: String {
+        switch filter {
+        case .none:
+            return "Posts"
+        case .favorites:
+            return "Favorites"
+        }
+    }
+    
     @EnvironmentObject private var viewModel : PostViewModel
     
     @State private var searchText: String = ""
@@ -56,7 +65,7 @@ struct PostsList: View {
                     }
                 }
             }
-            .navigationTitle("Posts")
+            .navigationTitle(navigationTitle)
             .toolbar{
                 Button(action: {showNewPostForm = true}) {
                     Label("New Post", systemImage: "square.and.pencil")
