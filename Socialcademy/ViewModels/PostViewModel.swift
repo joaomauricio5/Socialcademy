@@ -42,6 +42,19 @@ class PostViewModel: ObservableObject {
         }
     }
     
+    func fetchFavoritePosts() {
+        loadingStatus = .loading
+        Task {
+            do {
+                posts = try await PostsRepository.fetchFavoritePosts()
+                loadingStatus = .loaded
+            } catch {
+                print("Cannot fetch posts: \(error)")
+                loadingStatus = .error
+            }
+        }
+    }
+    
     func toggleFavorite(for post: Post) {
         PostsRepository.toggleFavorite(for: post)
         let index = posts.firstIndex(of: post)!

@@ -8,14 +8,19 @@
 import SwiftUI
 
 struct MainTabView: View {
+    
+    @StateObject private var viewModel = PostViewModel()
+    
     var body: some View {
         TabView {
-            PostsList()
+            PostsList(filter: .none)
+                .environmentObject(viewModel)
                 .tabItem {
                     Label("Posts", systemImage: "list.bullet")
                 }
             
-            Text("Second tab")
+            PostsList(filter: .favorites)
+                .environmentObject(viewModel)
                 .tabItem {
                     Label("Favorites", systemImage: "heart.fill")
                 }

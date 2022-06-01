@@ -7,9 +7,21 @@
 
 import SwiftUI
 
+
 struct PostsList: View {
     
-    @StateObject private var viewModel = PostViewModel()
+    enum Filter {
+        case none
+        case favorites
+    }
+    
+    private let filter: Filter
+    
+    init(filter: Filter = .none) {
+        self.filter = filter
+    }
+    
+    @EnvironmentObject private var viewModel : PostViewModel
     
     @State private var searchText: String = ""
     @State private var showNewPostForm = false
@@ -21,7 +33,14 @@ struct PostsList: View {
                 case .loading:
                     ProgressView()
                 case .error:
-                    EmptyListView(title: "Cannot Load Posts", message: "Retry or check your connection.", action: {viewModel.fetchPosts()})
+                    EmptyListView(title: "Cannot Load Posts", message: "Retry or check your connection.", action: {
+                        switch filter {
+                        case .none:
+                            viewModel.fetchPosts()
+                        case .favorites:
+                            viewModel.fetchFavoritePosts()
+                        }
+                    })
                 case .loaded:
                     if viewModel.posts.isEmpty {
                         EmptyListView(title: "No Posts", message: "There aren't any posts yet.")
@@ -49,7 +68,12 @@ struct PostsList: View {
                 })
             }
         }.onAppear {
-            viewModel.fetchPosts()
+            switch filter {
+            case .none:
+                viewModel.fetchPosts()
+            case .favorites:
+                viewModel.fetchFavoritePosts()
+            }
         }
     }
 }
