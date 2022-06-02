@@ -16,7 +16,8 @@ struct SocialcademyApp: App {
     }
     var body: some Scene {
         WindowGroup {
-            MainTabView()
+            //MainTabView()
+            AuthView()
         }
     }
 }

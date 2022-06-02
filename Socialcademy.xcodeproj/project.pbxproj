@@ -27,6 +27,10 @@
 		ED9E6159283BEDD4004925C6 /* PostsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9E6158283BEDD4004925C6 /* PostsRepository.swift */; };
 		EDA9C8272844353D000B5DE6 /* EmptyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA9C8262844353D000B5DE6 /* EmptyListView.swift */; };
 		EDD705032847C0F600FD8D6B /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD705022847C0F600FD8D6B /* MainTabView.swift */; };
+		EDD705062848FA8100FD8D6B /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = EDD705052848FA8100FD8D6B /* FirebaseAuth */; };
+		EDD705092848FC0B00FD8D6B /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD705082848FC0B00FD8D6B /* AuthService.swift */; };
+		EDD7050B2849008500FD8D6B /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD7050A2849008500FD8D6B /* AuthView.swift */; };
+		EDD7050D28490B7200FD8D6B /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD7050C28490B7200FD8D6B /* AuthViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +69,9 @@
 		ED9E6158283BEDD4004925C6 /* PostsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsRepository.swift; sourceTree = "<group>"; };
 		EDA9C8262844353D000B5DE6 /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
 		EDD705022847C0F600FD8D6B /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		EDD705082848FC0B00FD8D6B /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		EDD7050A2849008500FD8D6B /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		EDD7050C28490B7200FD8D6B /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +82,7 @@
 				ED9E612B283A9395004925C6 /* FirebaseAnalytics in Frameworks */,
 				ED9E612D283A9395004925C6 /* FirebaseFirestore in Frameworks */,
 				ED9E612F283A9395004925C6 /* FirebaseFirestoreSwift in Frameworks */,
+				EDD705062848FA8100FD8D6B /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +108,7 @@
 			children = (
 				ED9E60FE283A8F40004925C6 /* Socialcademy */,
 				ED9E60FD283A8F40004925C6 /* Products */,
+				EDD705042848FA8100FD8D6B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -116,6 +125,7 @@
 		ED9E60FE283A8F40004925C6 /* Socialcademy */ = {
 			isa = PBXGroup;
 			children = (
+				EDD705072848FBFB00FD8D6B /* Services */,
 				ED9E6157283BEDC1004925C6 /* Repositories */,
 				ED9E6152283BBC24004925C6 /* ViewModels */,
 				ED9E6149283ABE2C004925C6 /* Models */,
@@ -169,6 +179,7 @@
 				ED9E614E283AC19C004925C6 /* PostRow.swift */,
 				ED9E6150283B00E8004925C6 /* NewPostForm.swift */,
 				EDD705022847C0F600FD8D6B /* MainTabView.swift */,
+				EDD7050A2849008500FD8D6B /* AuthView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -195,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				ED9E6155283BBC63004925C6 /* PostViewModel.swift */,
+				EDD7050C28490B7200FD8D6B /* AuthViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -213,6 +225,21 @@
 				EDA9C8262844353D000B5DE6 /* EmptyListView.swift */,
 			);
 			path = SupportingViews;
+			sourceTree = "<group>";
+		};
+		EDD705042848FA8100FD8D6B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EDD705072848FBFB00FD8D6B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				EDD705082848FC0B00FD8D6B /* AuthService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -235,6 +262,7 @@
 				ED9E612A283A9395004925C6 /* FirebaseAnalytics */,
 				ED9E612C283A9395004925C6 /* FirebaseFirestore */,
 				ED9E612E283A9395004925C6 /* FirebaseFirestoreSwift */,
+				EDD705052848FA8100FD8D6B /* FirebaseAuth */,
 			);
 			productName = Socialcademy;
 			productReference = ED9E60FC283A8F40004925C6 /* Socialcademy.app */;
@@ -363,7 +391,10 @@
 				ED9E6100283A8F40004925C6 /* SocialcademyApp.swift in Sources */,
 				EDA9C8272844353D000B5DE6 /* EmptyListView.swift in Sources */,
 				ED9E614F283AC19C004925C6 /* PostRow.swift in Sources */,
+				EDD705092848FC0B00FD8D6B /* AuthService.swift in Sources */,
+				EDD7050D28490B7200FD8D6B /* AuthViewModel.swift in Sources */,
 				ED9E614D283ABF4A004925C6 /* PostsList.swift in Sources */,
+				EDD7050B2849008500FD8D6B /* AuthView.swift in Sources */,
 				ED9E6151283B00E8004925C6 /* NewPostForm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -720,6 +751,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = ED9E6129283A9395004925C6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestoreSwift;
+		};
+		EDD705052848FA8100FD8D6B /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ED9E6129283A9395004925C6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

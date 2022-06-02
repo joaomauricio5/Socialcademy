@@ -26,9 +26,6 @@ struct PostsRepository {
         document.delete() { error in
             if let error = error {
                 print("Error deleting document: \(error) ")
-                fatalError()
-            } else {
-                print("SUCCESS")
             }
         }
     }
