@@ -43,8 +43,8 @@ struct PostsRepository {
     
     static private func fetchPosts(from query: Query) async throws -> [Post] {
         let snapshot = try await query.order(by: "timestamp", descending: true).getDocuments()
-        return snapshot.documents.compactMap { document in
-             try! document.data(as: Post.self)
+        return try snapshot.documents.compactMap { document in
+             try document.data(as: Post.self)
         }
     }
     
