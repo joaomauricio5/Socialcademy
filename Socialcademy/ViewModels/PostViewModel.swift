@@ -19,9 +19,9 @@ class PostViewModel: ObservableObject {
     
     @Published var loadingStatus : LoadingStatus = .loading
     
-    func createPost(_ post: Post) throws {
+    func createPost(_ post: Post) {
         posts.insert(post, at: 0)
-        try PostsRepository.upload(post)
+        PostsRepository.upload(post)
     }
     
     func deletePost(_ post: Post) {

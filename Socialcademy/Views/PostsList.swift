@@ -73,7 +73,7 @@ struct PostsList: View {
             }
             .sheet(isPresented: $showNewPostForm) {
                 NewPostForm(createAction: { post in
-                    try viewModel.createPost(post)
+                    viewModel.createPost(post)
                 })
             }
         }.onAppear {
@@ -89,6 +89,6 @@ struct PostsList: View {
 
 struct PostsList_Previews: PreviewProvider {
     static var previews: some View {
-        PostsList()
+        PostsList().environmentObject(PostViewModel())
     }
 }

@@ -12,14 +12,18 @@ struct PostsRepository {
     static let store = Firestore.firestore()
     static let postsReference = store.collection("posts")
     
-    static func upload(_ post: Post) throws {
+    static func upload(_ post: Post) {
         let document = postsReference.document(post.id.uuidString)
-        try document.setData(from: post)
+        do {
+            try document.setData(from: post)
+        } catch {
+            print("Error creating the post: \(error)")
+        }
     }
     
     static func delete(_ post: Post) {
         let document = postsReference.document(post.id.uuidString)
-        try document.delete() { error in
+        document.delete() { error in
             if let error = error {
                 print("Error deleting document: \(error) ")
                 fatalError()
@@ -46,6 +50,10 @@ struct PostsRepository {
     
     static func toggleFavorite(for post: Post) {
         let document = PostsRepository.postsReference.document(post.id.uuidString)
-        try document.setData(["isFavorite": post.isFavorite ? false : true], merge: true)
+        document.setData(["isFavorite": post.isFavorite ? false : true], merge: true) { error in
+            if let error = error {
+                print("Error toggling favorite: \(error)")
+            }
+        }
     }
 }
