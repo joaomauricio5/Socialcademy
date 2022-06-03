@@ -23,10 +23,8 @@ struct AuthView: View {
             Form {
                 TextField("Email", text: $email)
                 SecureField("Password", text: $password)
-                Button(action: {
+                Button("Sign In") {
                     authViewModel.signIn(email: email, password: password)
-                }) {
-                    Text("Sign in")
                 }
             }
         }

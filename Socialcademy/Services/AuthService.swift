@@ -16,13 +16,12 @@ class AuthService: ObservableObject {
     private var listener: AuthStateDidChangeListenerHandle?
     
     init() {
-        listener = auth.addStateDidChangeListener { [weak self] _, user in
-            self?.isAuthenticated = user != nil
+        listener = auth.addStateDidChangeListener { /*[weak self]*/ _, user in
+            self/*?*/.isAuthenticated = (user != nil)
         }
     }
     
-    func signIn(email: String, password: String) {
-        auth.signIn(withEmail: email, password: password)
+    func signIn(email: String, password: String) async throws {
+        try await auth.signIn(withEmail: email, password: password)
     }
-    
 }

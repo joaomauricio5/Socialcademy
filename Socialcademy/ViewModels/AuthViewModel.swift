@@ -18,6 +18,12 @@ class AuthViewModel: ObservableObject {
     }
     
     func signIn(email: String, password: String) {
-        authService.signIn(email: email, password: password)
+        Task {
+            do {
+                try await authService.signIn(email: email, password: password)
+            } catch {
+                print("[AUTH VIEW MODEL] : \(error)")
+            }
+        }
     }
 }
