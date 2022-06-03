@@ -19,18 +19,44 @@ struct AuthView: View {
             MainTabView()
         } else {
             NavigationView{
-                Form {
-                    TextField("Email", text: $email)
-                    SecureField("Password", text: $password)
+                VStack {
+                    Text("Socialcademy")
+                        .bold()
+                        .font(.title)
+                        .padding(.vertical, 20.0)
+                    Group {
+                        TextField("Email", text: $email)
+                            .textContentType(UITextContentType.emailAddress)
+                            .textInputAutocapitalization(.never)
+                        
+                        SecureField("Password", text: $password)
+                            .textContentType(UITextContentType.password)
+                    }
+                    .padding()
+                    .background(Color.secondary.opacity(0.15))
+                    .cornerRadius(10)
+                    
+                    
                     Button("Sign In") {
                         authViewModel.signIn(email: email, password: password)
                     }
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .foregroundColor(.white)
+                    .background(Color.blue)
+                    .cornerRadius(10)
+                    .padding(.top, 30.0)
+                    
+
                     NavigationLink("Create Account") {
                         AuthView_CreateAccount()
                             .navigationTitle("Create Account")
                             .environmentObject(authViewModel)
                     }
-                }.navigationTitle("Sign In")
+                    .padding()
+                }
+                .navigationTitle("Sign In")
+                .navigationBarHidden(true)
             }
         }
     }

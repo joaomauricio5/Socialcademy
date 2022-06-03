@@ -17,7 +17,12 @@ struct AuthView_CreateAccount: View {
     var body: some View {
         Form {
             TextField("Email", text: $email)
+                .textContentType(UITextContentType.emailAddress)
+                .textInputAutocapitalization(.never)
+            
             SecureField("Password", text: $password)
+                .textContentType(UITextContentType.newPassword)
+            
             Button("Create Account") {
                 authViewModel.createAccount(email: email, password: password)
             }
