@@ -20,13 +20,23 @@ class PostViewModel: ObservableObject {
     @Published var loadingStatus : LoadingStatus = .loading
     
     func createPost(_ post: Post) {
-        posts.insert(post, at: 0)
-        PostsRepository.upload(post)
+        do {
+            try PostsRepository.upload(post)
+            posts.insert(post, at: 0)
+        } catch {
+            print("Error creating the post: \(error)")
+        }
     }
     
     func deletePost(_ post: Post) {
-        posts.removeAll() {$0.id == post.id}
-        PostsRepository.delete(post)
+        Task {
+            do {
+                posts.removeAll() {$0.id == post.id}
+                try await PostsRepository.delete(post)
+            } catch {
+                print("Error creating the post: \(error)")
+            }
+        }
     }
     
     func fetchPosts() {
@@ -56,8 +66,14 @@ class PostViewModel: ObservableObject {
     }
     
     func toggleFavorite(for post: Post) {
-        PostsRepository.toggleFavorite(for: post)
-        let index = posts.firstIndex(of: post)!
-        posts[index].isFavorite.toggle()
+        Task {
+            do {
+                try await PostsRepository.toggleFavorite(for: post)
+                let index = posts.firstIndex(of: post)!
+                posts[index].isFavorite.toggle()
+            } catch {
+                print("Cannot toggle favorite: \(error)")
+            }
+        }
     }
 }
