@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import FirebaseAuth
 
 struct MainTabView: View {
     
@@ -26,14 +25,10 @@ struct MainTabView: View {
                     Label("Favorites", systemImage: "heart.fill")
                 }
             
-            // THIS IS A TEMPORARY SOLUTION FOR SIGNING OUT - NEED TO UPDATE LATER ON
-            Button(action: {
-                try! Auth.auth().signOut()
-            }) {Text("Sign out PLACEHOLDER ")}
+            ProfileView()
                 .tabItem {
-                    Label("SIGN OUT PLACEHOLDER", systemImage: "person.fill")
+                    Label("Profile", systemImage: "person.fill")
                 }
-            //////////////////////////////
         }
     }
 }

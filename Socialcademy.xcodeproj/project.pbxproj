@@ -31,6 +31,7 @@
 		EDD705092848FC0B00FD8D6B /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD705082848FC0B00FD8D6B /* AuthService.swift */; };
 		EDD7050B2849008500FD8D6B /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD7050A2849008500FD8D6B /* AuthView.swift */; };
 		EDD7050D28490B7200FD8D6B /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD7050C28490B7200FD8D6B /* AuthViewModel.swift */; };
+		EDD7050F284A31C400FD8D6B /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD7050E284A31C400FD8D6B /* ProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		EDD705082848FC0B00FD8D6B /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		EDD7050A2849008500FD8D6B /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		EDD7050C28490B7200FD8D6B /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		EDD7050E284A31C400FD8D6B /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +178,7 @@
 			children = (
 				EDA9C82A284444BC000B5DE6 /* SupportingViews */,
 				ED9E614C283ABF4A004925C6 /* PostsList.swift */,
+				EDD7050E284A31C400FD8D6B /* ProfileView.swift */,
 				ED9E614E283AC19C004925C6 /* PostRow.swift */,
 				ED9E6150283B00E8004925C6 /* NewPostForm.swift */,
 				EDD705022847C0F600FD8D6B /* MainTabView.swift */,
@@ -385,6 +388,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED9E6156283BBC63004925C6 /* PostViewModel.swift in Sources */,
+				EDD7050F284A31C400FD8D6B /* ProfileView.swift in Sources */,
 				ED9E614B283ABE44004925C6 /* Post.swift in Sources */,
 				EDD705032847C0F600FD8D6B /* MainTabView.swift in Sources */,
 				ED9E6159283BEDD4004925C6 /* PostsRepository.swift in Sources */,
