@@ -36,14 +36,17 @@ struct AuthView: View {
                     .background(Color.secondary.opacity(0.15))
                     .cornerRadius(10)
                     
-                    
-                    Button("Sign In") {
-                        authViewModel.signIn(email: email, password: password)
+                    Button(action: {authViewModel.signIn(email: email, password: password)}) {
+                        if authViewModel.isWorking {
+                            ProgressView()
+                        } else {
+                            Text("Sign In")
+                        }
                     }
                     .padding()
                     .frame(maxWidth: .infinity)
                     .foregroundColor(.white)
-                    .background(Color.blue)
+                    .background(authViewModel.isWorking ? Color.gray : Color.blue)
                     .cornerRadius(10)
                     .padding(.top, 30.0)
                     
