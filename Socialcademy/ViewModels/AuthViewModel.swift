@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import FirebaseAuth
 
 //@MainActor
 class AuthViewModel: ObservableObject {
@@ -21,6 +20,16 @@ class AuthViewModel: ObservableObject {
         Task {
             do {
                 try await authService.signIn(email: email, password: password)
+            } catch {
+                print("[AUTH VIEW MODEL] : \(error)")
+            }
+        }
+    }
+    
+    func createAccount(email: String, password: String) {
+        Task {
+            do {
+                try await authService.createAccount(email: email, password: password)
             } catch {
                 print("[AUTH VIEW MODEL] : \(error)")
             }

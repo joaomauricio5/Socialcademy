@@ -32,6 +32,7 @@
 		EDD7050B2849008500FD8D6B /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD7050A2849008500FD8D6B /* AuthView.swift */; };
 		EDD7050D28490B7200FD8D6B /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD7050C28490B7200FD8D6B /* AuthViewModel.swift */; };
 		EDD7050F284A31C400FD8D6B /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD7050E284A31C400FD8D6B /* ProfileView.swift */; };
+		EDD70511284AB0F200FD8D6B /* AuthView_CreateAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD70510284AB0F200FD8D6B /* AuthView_CreateAccount.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		EDD7050A2849008500FD8D6B /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		EDD7050C28490B7200FD8D6B /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		EDD7050E284A31C400FD8D6B /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		EDD70510284AB0F200FD8D6B /* AuthView_CreateAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView_CreateAccount.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +185,7 @@
 				ED9E6150283B00E8004925C6 /* NewPostForm.swift */,
 				EDD705022847C0F600FD8D6B /* MainTabView.swift */,
 				EDD7050A2849008500FD8D6B /* AuthView.swift */,
+				EDD70510284AB0F200FD8D6B /* AuthView_CreateAccount.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 				ED9E614F283AC19C004925C6 /* PostRow.swift in Sources */,
 				EDD705092848FC0B00FD8D6B /* AuthService.swift in Sources */,
 				EDD7050D28490B7200FD8D6B /* AuthViewModel.swift in Sources */,
+				EDD70511284AB0F200FD8D6B /* AuthView_CreateAccount.swift in Sources */,
 				ED9E614D283ABF4A004925C6 /* PostsList.swift in Sources */,
 				EDD7050B2849008500FD8D6B /* AuthView.swift in Sources */,
 				ED9E6151283B00E8004925C6 /* NewPostForm.swift in Sources */,

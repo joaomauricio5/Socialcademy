@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-import FirebaseAuth
-
 struct AuthView: View {
     
     @State private var email = ""
@@ -20,12 +18,19 @@ struct AuthView: View {
         if authViewModel.isAuthenticated {
             MainTabView()
         } else {
-            Form {
-                TextField("Email", text: $email)
-                SecureField("Password", text: $password)
-                Button("Sign In") {
-                    authViewModel.signIn(email: email, password: password)
-                }
+            NavigationView{
+                Form {
+                    TextField("Email", text: $email)
+                    SecureField("Password", text: $password)
+                    Button("Sign In") {
+                        authViewModel.signIn(email: email, password: password)
+                    }
+                    NavigationLink("Create Account") {
+                        AuthView_CreateAccount()
+                            .navigationTitle("Create Account")
+                            .environmentObject(authViewModel)
+                    }
+                }.navigationTitle("Sign In")
             }
         }
     }
