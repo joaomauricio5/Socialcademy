@@ -27,7 +27,9 @@ struct AuthView_CreateAccount: View {
                 authViewModel.createAccount(email: email, password: password)
             }
         }
-        
+        .alert("\(authViewModel.anyError?.localizedDescription ?? "Error occured")", isPresented: $authViewModel.isThereAnError) {
+            Button("OK", role: .cancel) {}
+        }
     }
 }
 

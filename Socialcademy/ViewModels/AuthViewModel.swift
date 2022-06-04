@@ -7,10 +7,14 @@
 
 import Foundation
 
-//@MainActor
+@MainActor
 class AuthViewModel: ObservableObject {
     @Published var isAuthenticated = false
     @Published var isWorking = false
+    
+    var anyError: Error?
+    @Published var isThereAnError: Bool = false
+    
     
     private let authService = AuthService()
     
@@ -25,6 +29,8 @@ class AuthViewModel: ObservableObject {
                 try await authService.signIn(email: email, password: password)
             } catch {
                 print("[AUTH VIEW MODEL] : \(error)")
+                anyError = error
+                isThereAnError = true
             }
             isWorking = false
         }
@@ -37,6 +43,8 @@ class AuthViewModel: ObservableObject {
                 try await authService.createAccount(email: email, password: password)
             } catch {
                 print("[AUTH VIEW MODEL] : \(error)")
+                anyError = error
+                isThereAnError = true
             }
             isWorking = false
         }

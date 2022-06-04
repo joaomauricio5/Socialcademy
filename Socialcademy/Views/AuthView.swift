@@ -61,6 +61,9 @@ struct AuthView: View {
                 .navigationTitle("Sign In")
                 .navigationBarHidden(true)
             }
+            .alert("\(authViewModel.anyError?.localizedDescription ?? "Error occured")", isPresented: $authViewModel.isThereAnError) {
+                Button("OK", role: .cancel) {}
+            }
         }
     }
 }
