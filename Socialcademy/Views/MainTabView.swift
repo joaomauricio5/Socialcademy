@@ -9,7 +9,8 @@ import SwiftUI
 
 struct MainTabView: View {
     
-    @StateObject private var viewModel = PostViewModel()
+    
+    @EnvironmentObject private var viewModel: PostViewModel
     
     var body: some View {
         TabView {

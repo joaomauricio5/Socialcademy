@@ -11,12 +11,12 @@ struct Post: Identifiable, Codable, Equatable {
     var id = UUID()
     var title: String
     var content: String
-    var authorName: String
+    var author: User
     var timestamp = Date()
     var isFavorite = false
     
     func contains(_ string: String) -> Bool {
-        let components = [title, content, authorName].map{$0.lowercased()}
+        let components = [title, content, author.name].map{$0.lowercased()}
         let equivalent = components.filter{$0.contains(string.lowercased().trimmingCharacters(in: .whitespacesAndNewlines))}
         return !equivalent.isEmpty
     }
@@ -24,7 +24,7 @@ struct Post: Identifiable, Codable, Equatable {
     
     static let testPost = Post(title: "Lorem ipsum",
                            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                           authorName: "Jamie Harris", timestamp: Date(), isFavorite: true)
+                               author: User.testUser, timestamp: Date(), isFavorite: true)
 }
 
 

@@ -71,8 +71,8 @@ struct PostsList: View {
                     Label("New Post", systemImage: "square.and.pencil")
                 }
             }
-            .sheet(isPresented: $showNewPostForm) {
-                NewPostForm(createAction: { post in
+            .sheet(isPresented: $showNewPostForm) {                
+                NewPostForm(user: viewModel.user, newPost: Post(title: "", content: "", author: viewModel.user), createAction: { post in
                     viewModel.createPost(post)
                 })
             }
@@ -89,6 +89,6 @@ struct PostsList: View {
 
 struct PostsList_Previews: PreviewProvider {
     static var previews: some View {
-        PostsList().environmentObject(PostViewModel())
+        PostsList().environmentObject(PostViewModel(user: User.testUser))
     }
 }

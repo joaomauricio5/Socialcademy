@@ -16,8 +16,12 @@ class PostViewModel: ObservableObject {
     }
     
     @Published var posts = [Post]()
-    
     @Published var loadingStatus : LoadingStatus = .loading
+    let user: User
+    
+    init(user: User) {
+        self.user = user
+    }
     
     func createPost(_ post: Post) {
         do {

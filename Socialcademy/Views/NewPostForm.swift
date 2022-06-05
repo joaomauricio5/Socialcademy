@@ -23,9 +23,10 @@ struct NewPostForm: View {
         }
     }
     
+    let user: User
     @State private var state = FormState.idle
+    @State var newPost: Post
     
-    @State private var newPost = Post(title: "", content: "", authorName: "")
     
     @Environment(\.dismiss) var dismiss
     
@@ -49,7 +50,7 @@ struct NewPostForm: View {
             Form {
                 Section{
                     TextField("Title", text: $newPost.title)
-                    TextField("Author", text: $newPost.authorName)
+                    Text(newPost.author.id)
                 }
                 Section("Content") {
                     TextEditor(text: $newPost.content)
@@ -83,6 +84,6 @@ struct NewPostForm: View {
 
 struct NewPostForm_Previews: PreviewProvider {
     static var previews: some View {
-        NewPostForm(createAction: {_ in })
+        NewPostForm(user: User.testUser, newPost: Post(title: "Title", content: "Content", author: User.testUser), createAction: {_ in })
     }
 }

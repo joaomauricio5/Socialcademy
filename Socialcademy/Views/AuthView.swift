@@ -15,8 +15,10 @@ struct AuthView: View {
     @StateObject var authViewModel = AuthViewModel()
     
     var body: some View {
-        if authViewModel.isAuthenticated {
+        if let user = authViewModel.user {
             MainTabView()
+                .environmentObject(PostViewModel(user: user))
+                
         } else {
             NavigationView{
                 VStack {

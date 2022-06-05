@@ -10,7 +10,8 @@ import FirebaseFirestoreSwift
 
 struct PostsRepository {
     static let store = Firestore.firestore()
-    static let postsReference = store.collection("posts")
+    static let postsReference = store.collection("posts_v2")
+    let user: User
     
     static func upload(_ post: Post) throws {
         let document = postsReference.document(post.id.uuidString)
