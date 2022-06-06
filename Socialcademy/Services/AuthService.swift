@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseAuth
 
-// @MainActor
+@MainActor
 class AuthService: ObservableObject {
     @Published var isAuthenticated = false
     @Published var user: User?
@@ -19,7 +19,7 @@ class AuthService: ObservableObject {
     init() {
         listener = auth.addStateDidChangeListener { /*[weak self]*/ _, user in
             /*self/*?*/.isAuthenticated = (user != nil)*/
-            self.user = user.map(User.init(from: ))
+            self.user = user.map(User.init(from:))
         }
     }
     
@@ -29,5 +29,12 @@ class AuthService: ObservableObject {
     
     func createAccount(email: String, password: String) async throws {
         try await auth.createUser(withEmail: email, password: password)
+    }
+    
+    func updateCurrentAccountName(name: String) async throws {
+        let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+        changeRequest?.displayName = name
+        try await changeRequest?.commitChanges()
+        user?.name = name
     }
 }

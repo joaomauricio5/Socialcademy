@@ -50,7 +50,7 @@ struct NewPostForm: View {
             Form {
                 Section{
                     TextField("Title", text: $newPost.title)
-                    Text(newPost.author.id)
+                    Text(newPost.author.name)
                 }
                 Section("Content") {
                     TextEditor(text: $newPost.content)

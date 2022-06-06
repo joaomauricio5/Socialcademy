@@ -11,11 +11,16 @@ struct AuthView_CreateAccount: View {
     
     @State private var email = ""
     @State private var password = ""
+    @State private var name = ""
 
     @EnvironmentObject var authViewModel: AuthViewModel
     
     var body: some View {
         Form {
+            TextField("Name", text: $name)
+                .textContentType(UITextContentType.name)
+                //.textInputAutocapitalization(.never)
+            
             TextField("Email", text: $email)
                 .textContentType(UITextContentType.emailAddress)
                 .textInputAutocapitalization(.never)
@@ -24,7 +29,7 @@ struct AuthView_CreateAccount: View {
                 .textContentType(UITextContentType.newPassword)
             
             Button("Create Account") {
-                authViewModel.createAccount(email: email, password: password)
+                authViewModel.createAccount(name: name, email: email, password: password)
             }
         }
         .alert("\(authViewModel.anyError?.localizedDescription ?? "Error occured")", isPresented: $authViewModel.isThereAnError) {
