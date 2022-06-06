@@ -80,4 +80,8 @@ class PostViewModel: ObservableObject {
             }
         }
     }
+    
+    func canCurrentUserDeletePost(post: Post) -> Bool {
+        post.author.id == user.id
+    }
 }

@@ -13,6 +13,7 @@ struct PostRow: View {
     let post: Post
     
     @State private var isConfirmationShowing = false
+    var currentUserCanDeletePost: Bool
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10){
@@ -44,15 +45,17 @@ struct PostRow: View {
                 
                 Spacer()
                 
-                Button(role: .destructive,
-                       action: { isConfirmationShowing = true }) {
-                    Label("Trash bin", systemImage: "trash")
+                if currentUserCanDeletePost {
+                    Button(role: .destructive,
+                           action: { isConfirmationShowing = true }) {
+                        Label("Trash bin", systemImage: "trash")
+                    }
+                           .confirmationDialog("Are you sure you want to delete this post?",
+                                               isPresented: $isConfirmationShowing,
+                                               titleVisibility: Visibility.visible) {
+                               Button("Delete", role: .destructive) { viewModel.deletePost(post) }
+                           }
                 }
-                       .confirmationDialog("Are you sure you want to delete this post?",
-                                           isPresented: $isConfirmationShowing,
-                                           titleVisibility: Visibility.visible) {
-                           Button("Delete", role: .destructive) { viewModel.deletePost(post) }
-                       }
             }
         }
         .padding(.vertical)
@@ -64,7 +67,7 @@ struct PostRow: View {
 struct PostRow_Previews: PreviewProvider {
     static var previews: some View {
         List{
-            PostRow(post: Post.testPost)
+            PostRow(post: Post.testPost, currentUserCanDeletePost: true)
         }
     }
 }

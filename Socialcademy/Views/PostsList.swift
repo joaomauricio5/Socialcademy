@@ -56,7 +56,7 @@ struct PostsList: View {
                     } else {
                         List(viewModel.posts) {post in
                             if searchText.isEmpty || post.contains(searchText){
-                                PostRow(post: post)
+                                PostRow(post: post, currentUserCanDeletePost: viewModel.canCurrentUserDeletePost(post: post))
                                     .environmentObject(viewModel)
                             }
                         }
