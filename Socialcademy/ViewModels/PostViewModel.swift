@@ -56,6 +56,19 @@ class PostViewModel: ObservableObject {
         }
     }
     
+    func fetchPosts(by author: User) {
+        loadingStatus = .loading
+        Task {
+            do {
+                posts = try await PostsRepository.fetchPosts(by: author)
+                loadingStatus = .loaded
+            } catch {
+                print("Cannot fetch posts: \(error)")
+                loadingStatus = .error
+            }
+        }
+    }
+    
     func fetchFavoritePosts() {
         loadingStatus = .loading
         Task {

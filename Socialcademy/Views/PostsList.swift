@@ -13,6 +13,7 @@ struct PostsList: View {
     enum Filter {
         case none
         case favorites
+        case author(User)
     }
     
     private let filter: Filter
@@ -27,6 +28,8 @@ struct PostsList: View {
             return "Posts"
         case .favorites:
             return "Favorites"
+        case let .author(author):
+            return "\(author.name)'s Posts"
         }
     }
     
@@ -48,6 +51,8 @@ struct PostsList: View {
                             viewModel.fetchPosts()
                         case .favorites:
                             viewModel.fetchFavoritePosts()
+                        case let .author(author):
+                            viewModel.fetchPosts(by: author)
                         }
                     })
                 case .loaded:
@@ -82,6 +87,8 @@ struct PostsList: View {
                 viewModel.fetchPosts()
             case .favorites:
                 viewModel.fetchFavoritePosts()
+            case let .author(author):
+                viewModel.fetchPosts(by: author)
             }
         }
     }

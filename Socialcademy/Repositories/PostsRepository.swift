@@ -31,6 +31,10 @@ struct PostsRepository {
         try await fetchPosts(from: postsReference.whereField("isFavorite", isEqualTo: true))
     }
     
+    static func fetchPosts(by author: User) async throws -> [Post] {
+        return try await fetchPosts(from: postsReference.whereField("author.id", isEqualTo: author.id))
+    }
+    
     static private func fetchPosts(from query: Query) async throws -> [Post] {
         let snapshot = try await query.order(by: "timestamp", descending: true).getDocuments()
         return try snapshot.documents.compactMap { document in
