@@ -59,14 +59,16 @@ struct PostsList: View {
                     if viewModel.posts.isEmpty {
                         EmptyListView(title: "No Posts", message: "There aren't any posts yet.")
                     } else {
-                        List(viewModel.posts) {post in
-                            if searchText.isEmpty || post.contains(searchText){
-                                PostRow(post: post, currentUserCanDeletePost: viewModel.canCurrentUserDeletePost(post: post))
-                                    .environmentObject(viewModel)
+                        ScrollView {
+                            ForEach(viewModel.posts) {post in
+                                if searchText.isEmpty || post.contains(searchText){
+                                    PostRow(post: post, currentUserCanDeletePost: viewModel.canCurrentUserDeletePost(post: post))
+                                        .environmentObject(viewModel)
+                                }
                             }
+                            .searchable(text: $searchText)
+                            .animation(Animation.default, value: viewModel.posts)
                         }
-                        .searchable(text: $searchText)
-                        .animation(Animation.default, value: viewModel.posts)
                     }
                 }
             }
@@ -76,7 +78,7 @@ struct PostsList: View {
                     Label("New Post", systemImage: "square.and.pencil")
                 }
             }
-            .sheet(isPresented: $showNewPostForm) {                
+            .sheet(isPresented: $showNewPostForm) {
                 NewPostForm(user: viewModel.user, newPost: Post(title: "", content: "", author: viewModel.user), createAction: { post in
                     viewModel.createPost(post)
                 })

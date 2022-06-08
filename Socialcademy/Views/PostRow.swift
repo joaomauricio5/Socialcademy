@@ -16,7 +16,7 @@ struct PostRow: View {
     var currentUserCanDeletePost: Bool
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 10){
+        VStack(alignment: .leading, spacing: 10) {
             HStack {
                 NavigationLink(destination: {PostsList(filter: .author(post.author))}) {
                     Text(post.author.name)
@@ -60,16 +60,14 @@ struct PostRow: View {
                 }
             }
         }
-        .padding(.vertical)
-        .buttonStyle(.borderless)
+        .padding()
         .labelStyle(.iconOnly)
     }
 }
 
 struct PostRow_Previews: PreviewProvider {
     static var previews: some View {
-        List{
-            PostRow(post: Post.testPost, currentUserCanDeletePost: true)
-        }
+        PostRow(post: Post.testPost, currentUserCanDeletePost: true)
+            .previewLayout(.sizeThatFits)
     }
 }

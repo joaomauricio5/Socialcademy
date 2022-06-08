@@ -86,8 +86,9 @@ class PostViewModel: ObservableObject {
         Task {
             do {
                 try await PostsRepository.toggleFavorite(for: post)
-                let index = posts.firstIndex(of: post)!
-                posts[index].isFavorite.toggle()
+                if let index = posts.firstIndex(of: post) {
+                    posts[index].isFavorite.toggle()
+                }
             } catch {
                 print("Cannot toggle favorite: \(error)")
             }
