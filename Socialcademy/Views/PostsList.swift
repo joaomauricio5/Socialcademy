@@ -16,11 +16,7 @@ struct PostsList: View {
         case author(User)
     }
     
-    private let filter: Filter
-    
-    init(filter: Filter = .none) {
-        self.filter = filter
-    }
+    let filter: Filter
     
     private var navigationTitle: String {
         switch filter {
@@ -33,7 +29,7 @@ struct PostsList: View {
         }
     }
     
-    @EnvironmentObject private var viewModel : PostViewModel
+    @StateObject var viewModel : PostViewModel
     
     @State private var searchText: String = ""
     @State private var showNewPostForm = false
@@ -83,7 +79,8 @@ struct PostsList: View {
                     viewModel.createPost(post)
                 })
             }
-        }.onAppear {
+        }
+        .onAppear {
             switch filter {
             case .none:
                 viewModel.fetchPosts()
@@ -98,6 +95,6 @@ struct PostsList: View {
 
 struct PostsList_Previews: PreviewProvider {
     static var previews: some View {
-        PostsList().environmentObject(PostViewModel(user: User.testUser))
+        PostsList(filter: .none, viewModel: PostViewModel(user: User.testUser))
     }
 }

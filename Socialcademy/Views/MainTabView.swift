@@ -14,13 +14,13 @@ struct MainTabView: View {
     
     var body: some View {
         TabView {
-            PostsList(filter: .none)
+            PostsList(filter: .none, viewModel: viewModel)
                 .environmentObject(viewModel)
                 .tabItem {
                     Label("Posts", systemImage: "list.bullet")
                 }
             
-            PostsList(filter: .favorites)
+            PostsList(filter: .favorites, viewModel: viewModel)
                 .environmentObject(viewModel)
                 .tabItem {
                     Label("Favorites", systemImage: "heart.fill")
