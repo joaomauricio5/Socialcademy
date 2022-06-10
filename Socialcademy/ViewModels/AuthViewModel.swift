@@ -24,39 +24,29 @@ class AuthViewModel: ObservableObject {
     }
     
     func signIn(email: String, password: String) {
-        Task {
-            isWorking = true
-            do {
-                try await authService.signIn(email: email, password: password)
-            } catch {
-                print("[AUTH VIEW MODEL] : \(error)")
-                anyError = error
-                isThereAnError = true
-            }
-            isWorking = false
+        withErrorHandling {
+            try await self.authService.signIn(email: email, password: password)
         }
     }
     
     func createAccount(name: String, email: String, password: String) {
-        Task {
-            isWorking = true
-            do {
-                try await authService.createAccount(email: email, password: password)
-                self.updateCurrentAccountName(name: name)
-            } catch {
-                print("[AUTH VIEW MODEL] : \(error)")
-                anyError = error
-                isThereAnError = true
-            }
-            isWorking = false
+        withErrorHandling {
+            try await self.authService.createAccount(email: email, password: password)
+            self.updateCurrentAccountName(name: name)
         }
     }
     
     func updateCurrentAccountName(name: String) {
+        withErrorHandling {
+            try await self.authService.updateCurrentAccountName(name: name)
+        }
+    }
+    
+    private func withErrorHandling(perform action: @escaping () async throws -> Void) {
         Task {
             isWorking = true
             do {
-                try await authService.updateCurrentAccountName(name: name)
+                try await action()
             } catch {
                 print("[AUTH VIEW MODEL] : \(error)")
                 anyError = error
