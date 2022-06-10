@@ -9,22 +9,22 @@ import SwiftUI
 
 struct MainTabView: View {
     
-    
     @EnvironmentObject private var viewModel: PostViewModel
     
     var body: some View {
         TabView {
-            PostsList(filter: .none, viewModel: viewModel)
-                .environmentObject(viewModel)
-                .tabItem {
-                    Label("Posts", systemImage: "list.bullet")
-                }
             
-            PostsList(filter: .favorites, viewModel: viewModel)
-                .environmentObject(viewModel)
-                .tabItem {
-                    Label("Favorites", systemImage: "heart.fill")
-                }
+            NavigationView {
+                PostsList(filter: .none, viewModel: viewModel)
+            }.tabItem {
+                Label("Posts", systemImage: "list.bullet")
+            }
+            
+            NavigationView {
+                PostsList(filter: .favorites, viewModel: viewModel)
+            }.tabItem {
+                Label("Favorites", systemImage: "heart.fill")
+            }
             
             ProfileView()
                 .tabItem {
