@@ -22,7 +22,7 @@ struct PostRow: View {
                     Text(post.author.name)
                         .font(.subheadline)
                         .fontWeight(.light)
-                }
+                }.disabled(viewModel.isFilteringByAuthor)
 
                 Spacer()
 

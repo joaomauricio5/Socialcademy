@@ -13,13 +13,22 @@ class PostViewModel: ObservableObject {
     enum LoadingStatus {
         case loading, loaded, error
     }
-    
-    enum Filter {
+
+    enum Filter: Equatable {
         case none
         case favorites
         case author(User)
     }
     let filter: Filter
+    
+    var isFilteringByAuthor: Bool {
+        switch filter {
+        case .author(_):
+            return true
+        default:
+            return false
+        }
+    }
     
     var navigationTitle: String {
         switch filter {
