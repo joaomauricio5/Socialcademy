@@ -8,19 +8,37 @@
 import Foundation
 
 @MainActor
-
 class PostViewModel: ObservableObject {
     
     enum LoadingStatus {
         case loading, loaded, error
     }
     
+    enum Filter {
+        case none
+        case favorites
+        case author(User)
+    }
+    let filter: Filter
+    
+    var navigationTitle: String {
+        switch filter {
+        case .none:
+            return "Posts"
+        case .favorites:
+            return "Favorites"
+        case let .author(author):
+            return "\(author.name)'s Posts"
+        }
+    }
+    
     @Published var posts = [Post]()
     @Published var loadingStatus : LoadingStatus = .loading
     let user: User
     
-    init(user: User) {
+    init(user: User, filter: Filter) {
         self.user = user
+        self.filter = filter
     }
     
     func createPost(_ post: Post) {
@@ -47,33 +65,14 @@ class PostViewModel: ObservableObject {
         loadingStatus = .loading
         Task {
             do {
-                posts = try await PostsRepository.fetchAllPosts()
-                loadingStatus = .loaded
-            } catch {
-                print("Cannot fetch posts: \(error)")
-                loadingStatus = .error
-            }
-        }
-    }
-    
-    func fetchPosts(by author: User) {
-        loadingStatus = .loading
-        Task {
-            do {
-                posts = try await PostsRepository.fetchPosts(by: author)
-                loadingStatus = .loaded
-            } catch {
-                print("Cannot fetch posts: \(error)")
-                loadingStatus = .error
-            }
-        }
-    }
-    
-    func fetchFavoritePosts() {
-        loadingStatus = .loading
-        Task {
-            do {
-                posts = try await PostsRepository.fetchFavoritePosts()
+                switch filter {
+                case .none:
+                    posts = try await PostsRepository.fetchAllPosts()
+                case .favorites:
+                    posts = try await PostsRepository.fetchFavoritePosts()
+                case .author(let author):
+                    posts = try await PostsRepository.fetchPosts(by: author)
+                }
                 loadingStatus = .loaded
             } catch {
                 print("Cannot fetch posts: \(error)")

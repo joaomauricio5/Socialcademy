@@ -15,13 +15,13 @@ struct MainTabView: View {
         TabView {
             
             NavigationView {
-                PostsList(filter: .none, viewModel: PostViewModel(user: user))
+                PostsList(viewModel: PostViewModel(user: user, filter: .none))
             }.tabItem {
                 Label("Posts", systemImage: "list.bullet")
             }
             
             NavigationView {
-                PostsList(filter: .favorites, viewModel: PostViewModel(user: user))
+                PostsList(viewModel: PostViewModel(user: user, filter: .favorites))
             }.tabItem {
                 Label("Favorites", systemImage: "heart.fill")
             }

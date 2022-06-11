@@ -18,7 +18,7 @@ struct PostRow: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
-                NavigationLink(destination: {PostsList(filter: .author(post.author), viewModel: PostViewModel(user: viewModel.user))}) {
+                NavigationLink(destination: {PostsList(viewModel: PostViewModel(user: viewModel.user, filter: .author(post.author)))}) {
                     Text(post.author.name)
                         .font(.subheadline)
                         .fontWeight(.light)

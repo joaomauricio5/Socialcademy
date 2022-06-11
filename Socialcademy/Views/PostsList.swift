@@ -10,25 +10,6 @@ import SwiftUI
 
 struct PostsList: View {
     
-    enum Filter {
-        case none
-        case favorites
-        case author(User)
-    }
-    
-    let filter: Filter
-    
-    private var navigationTitle: String {
-        switch filter {
-        case .none:
-            return "Posts"
-        case .favorites:
-            return "Favorites"
-        case let .author(author):
-            return "\(author.name)'s Posts"
-        }
-    }
-    
     @StateObject var viewModel : PostViewModel
     
     @State private var searchText: String = ""
@@ -40,16 +21,7 @@ struct PostsList: View {
             case .loading:
                 ProgressView()
             case .error:
-                EmptyListView(title: "Cannot Load Posts", message: "Retry or check your connection.", action: {
-                    switch filter {
-                    case .none:
-                        viewModel.fetchPosts()
-                    case .favorites:
-                        viewModel.fetchFavoritePosts()
-                    case let .author(author):
-                        viewModel.fetchPosts(by: author)
-                    }
-                })
+                EmptyListView(title: "Cannot Load Posts", message: "Retry or check your connection.", action: { viewModel.fetchPosts() })
             case .loaded:
                 if viewModel.posts.isEmpty {
                     EmptyListView(title: "No Posts", message: "There aren't any posts yet.")
@@ -67,7 +39,7 @@ struct PostsList: View {
                 }
             }
         }
-        .navigationTitle(navigationTitle)
+        .navigationTitle(viewModel.navigationTitle)
         .toolbar{
             Button(action: {showNewPostForm = true}) {
                 Label("New Post", systemImage: "square.and.pencil")
@@ -79,20 +51,13 @@ struct PostsList: View {
             })
         }
         .onAppear {
-            switch filter {
-            case .none:
-                viewModel.fetchPosts()
-            case .favorites:
-                viewModel.fetchFavoritePosts()
-            case let .author(author):
-                viewModel.fetchPosts(by: author)
-            }
+            viewModel.fetchPosts()
         }
     }
 }
 
 struct PostsList_Previews: PreviewProvider {
     static var previews: some View {
-        PostsList(filter: .none, viewModel: PostViewModel(user: User.testUser))
+        PostsList(viewModel: PostViewModel(user: User.testUser, filter: .none))
     }
 }
