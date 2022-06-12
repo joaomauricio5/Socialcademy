@@ -41,8 +41,10 @@ struct PostsList: View {
         }
         .navigationTitle(viewModel.navigationTitle)
         .toolbar{
-            Button(action: {showNewPostForm = true}) {
-                Label("New Post", systemImage: "square.and.pencil")
+            if viewModel.filter == .none {
+                Button(action: {showNewPostForm = true}) {
+                    Label("New Post", systemImage: "square.and.pencil")
+                }
             }
         }
         .sheet(isPresented: $showNewPostForm) {
