@@ -15,8 +15,8 @@ struct AuthView: View {
     @StateObject var authViewModel = AuthViewModel()
     
     var body: some View {
-        if let user = authViewModel.user {
-            MainTabView(user: user)
+        if (authViewModel.user != nil) && (authViewModel.user?.name != "") { // this needs some refactoring and comments. This way, when user creates account, displayName will have to load, and only then the app is loaded
+            MainTabView(user: authViewModel.user!)
         } else {
             NavigationView{
                 VStack {

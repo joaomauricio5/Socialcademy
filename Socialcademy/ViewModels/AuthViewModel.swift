@@ -31,8 +31,7 @@ class AuthViewModel: ObservableObject {
     
     func createAccount(name: String, email: String, password: String) {
         withErrorHandling {
-            try await self.authService.createAccount(email: email, password: password)
-            self.updateCurrentAccountName(name: name)
+            try await self.authService.createAccount(name: name, email: email, password: password)
         }
     }
     
